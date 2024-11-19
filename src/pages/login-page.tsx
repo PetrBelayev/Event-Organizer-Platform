@@ -1,8 +1,9 @@
 import "../styles/loginstyles.css";
 import {useNavigate} from "react-router-dom";
-import Logo from "../images/logo-white.svg"
 import {useState} from "react";
 import {LoginData, setUser} from "../api/login-data";
+import {Simulate} from "react-dom/test-utils";
+import error = Simulate.error;
 
 
 const LoginPage = () => {
@@ -18,11 +19,14 @@ const LoginPage = () => {
                 password: password,
             }
 
-            await setUser(data);
-            navigate("/something");
+            validation(data);
+
+            localStorage.setItem("token", "TOKERFDKFJJSKDFKSDF");
+            // await setUser(data);
+
+            navigate("/main-page");
 
         } catch (error) {
-            console.log(error);
             setMistakes(true);
             setTimeout(() => {
                 setMistakes(false);
@@ -30,11 +34,17 @@ const LoginPage = () => {
         }
     };
 
+    const validation = (data: LoginData) => {
+        if (data.email && data.password && !data.email.includes(" ")) {
+            return true;
+        }
+        throw error;
+    }
+
     return (
         <div className="login-wrapper">
-            <img src={Logo} alt="VK&Techaas" className="login-image"/>
             <div className="login-container">
-                <h1>Войти</h1>
+                <h1>EVENT ORGANISER</h1>
                 <label>Логин</label>
                 <input style={mistakes ? {borderColor: "#A62800"} : {borderColor: "#FFFFFF"}}
                        type="text"
