@@ -36,3 +36,15 @@
 .list-links div {
     cursor: pointer;
 }
+
+@media (max-width: 1000px) {
+    .logo-block {
+        font-size: 1rem;
+    }
+
+    .list-links {
+        font-size: 0.8rem;
+        gap: 5vw;
+        margin-right: 8vw;
+    }
+}

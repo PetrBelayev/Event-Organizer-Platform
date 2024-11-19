@@ -21,7 +21,7 @@ const Header = () => {
 
                 <div className="list-links">
                     <div onClick={clear}>+Событие</div>
-                    <div onClick={clear}>Все события</div>
+                    <div onClick={() => navigate("/main-page")}>Все события</div>
                     <div onClick={clear}>Выйти</div>
                 </div>
             </div>

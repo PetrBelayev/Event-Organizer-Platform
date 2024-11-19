@@ -1,0 +1,71 @@
+.card {
+    background-color: #fbeeff;
+    color: black;
+    border-radius: 1rem; /* закругленные углы */
+    box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.1); /* адаптивная тень */
+    overflow: hidden;
+    width: 100%; /* ширина в процентах от экрана */
+    max-width: 25rem; /* ограничиваем ширину */
+    margin: 1rem; /* отступы между карточками */
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.card:hover {
+    background-color: #bda1e8;
+    box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.4); /* адаптивная тень */
+}
+
+.card-image {
+    width: 100%; /* занимает всю ширину карточки */
+    height: 20vh; /* высота в процентах от высоты экрана */
+    max-height: 12rem; /* ограничиваем максимальную высоту */
+    object-fit: cover; /* обрезка картинки для заполнения */
+}
+
+.card-content {
+    padding: 1.5rem; /* внутренние отступы */
+}
+
+.card-title {
+    font-size: 1.5rem; /* размер заголовка */
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-decoration: none;
+
+}
+
+.card-content p {
+    margin: 0.5rem 0;
+    font-size: 1rem; /* текст размером в rem */
+    color: #555;
+    text-decoration: none;
+
+}
+
+.card-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Два равных столбца */
+    gap: 2vh; /* Отступы между карточками */
+    width: 100%;
+    justify-items: center; /* Выравнивание карточек по центру */
+    margin-top: 14vh;
+}
+
+@media (max-width: 1000px) {
+    .card-list {
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        gap: 2vw; /* Отступы между карточками */
+        justify-items: center; /* Выравнивание карточек по центру */
+        align-items: center;
+        margin-top: 14vh;
+    }
+}
+
