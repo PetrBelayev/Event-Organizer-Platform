@@ -2,6 +2,7 @@ import React from 'react';
 import '../styles/cardstyles.css';
 import {CardProps} from "../api/get-cards";
 import defaultImg from "../images/img.png"
+import {images} from "./images-array";
 
 
 const Card: React.FC<CardProps> = ({title, img_url, time, location, description}) => {
@@ -9,7 +10,7 @@ const Card: React.FC<CardProps> = ({title, img_url, time, location, description}
         <div className="card">
             <img
                 className="card-image"
-                src={img_url || defaultImg}
+                src={images.find(image => image.id === Number(img_url))?.src || defaultImg}
                 alt={title}
             />
             <div className="card-content">

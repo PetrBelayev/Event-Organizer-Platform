@@ -7,7 +7,7 @@ const mockData = [
     {
         id: 1,
         title: 'День рождения кошки бабушки',
-        img_url: '',
+        img_url: 1,
         time: '2024-12-25 18:00',
         location: 'Квартира №5',
         description: 'Отметим за чаем с тортом!',
@@ -15,7 +15,7 @@ const mockData = [
     {
         id: 2,
         title: 'Концерт в парке',
-        img_url: "../images/img.png",
+        img_url: 2,
         time: '2024-12-20 19:00',
         location: 'Центральный парк',
         description: 'Музыка, танцы и хорошее настроение.',
@@ -23,7 +23,7 @@ const mockData = [
     {
         id: 3,
         title: 'Семинар по программированию',
-        img_url: '',
+        img_url: 3,
         time: '2024-11-30 14:00',
         location: 'Онлайн',
         description: 'Разбираем основы React и TypeScript!',
@@ -31,7 +31,7 @@ const mockData = [
     {
         id: 4,
         title: 'Фестиваль уличной еды',
-        img_url: "../images/img.png",
+        img_url: 2,
         time: '2024-12-10 12:00',
         location: 'Площадь Согласия',
         description: 'Попробуйте кухни мира прямо в центре города!',
@@ -39,7 +39,7 @@ const mockData = [
     {
         id: 5,
         title: 'Выставка современного искусства',
-        img_url: '',
+        img_url: 1,
         time: '2024-12-18 10:00',
         location: 'Галерея XXI века',
         description: 'Новые перспективы и яркие впечатления.',

@@ -1,0 +1,116 @@
+.wrapper {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper .login-container {
+    background-color: #e8dcf8;
+    margin-top: 14vh;
+    padding: 2vw;
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 40vw;
+    height: fit-content;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    max-width: 100%; /* ensures it fits smaller screens */
+}
+
+.wrapper .login-container h1 {
+    font-size: 1.5rem; /* use rem for flexible sizing */
+    color: #2b2828;
+    margin-bottom: 20px;
+}
+
+.wrapper .login-container label {
+    display: block;
+    font-size: 0.875rem; /* 14px equivalent */
+    margin-bottom: 5px;
+    color: #1B1A1AFF;
+    text-align: left;
+}
+
+.wrapper .login-container input {
+    align-self: center;
+    width: 100%;
+    height: 5.5vh;
+    border: 1.9px solid;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-sizing: border-box
+}
+
+.wrapper .login-container input:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgb(99, 46, 170);
+}
+
+.wrapper .login-container button {
+    align-self: center;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background-color: #8545e8;
+    color: white;
+    font-size: 1rem; /* flexible sizing */
+    cursor: pointer;
+}
+
+.wrapper .image-editor {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.875rem; /* 14px equivalent */
+}
+
+.wrapper .image-preview {
+    display: flex;
+    gap: 5vw;
+    flex-direction: row;
+}
+
+.wrapper .image-preview img {
+    width: 7vw;
+    height: 7vw;
+    border: none;
+    border-radius: 50%;
+}
+
+.wrapper .image-preview .radio {
+    width: 2vw;
+    border: none;
+}
+
+.textdescr {
+    resize: none;
+    height: 10vh;
+    border-radius: 10px;
+    margin-bottom: 2vh;
+}
+
+.wrapper .image-preview .radio:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+@media only screen and (max-width: 767px) {
+    .wrapper .login-container {
+        width: 80vw;
+        height: fit-content;
+    }
+
+    .wrapper .image-preview img {
+        width: 17vw;
+        height: 17vw;
+        border: none;
+        border-radius: 50%;
+    }
+
+}

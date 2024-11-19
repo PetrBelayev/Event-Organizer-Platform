@@ -16,6 +16,8 @@ const DetailedCard = () => {
     }
 
     const editEvent = () => {
+        if (id) navigate("/edit-event/" + id.toString());
+        else navigate("/main-page");
     }
 
     return (

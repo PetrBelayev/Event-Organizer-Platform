@@ -3,6 +3,7 @@ import {Route, Routes} from "react-router-dom";
 import ProtectedRoute from "../components/protected-route";
 import MainPage from "../pages/main-page";
 import DetailedCard from "../pages/detailed-card";
+import EditAdd from "../pages/edit-app-event";
 
 // All routes for navigation
 const AllRoutes = () => {
@@ -12,9 +13,12 @@ const AllRoutes = () => {
 
             <Route path="/main-page" element={<ProtectedRoute>
                 <MainPage/></ProtectedRoute>}/>
-
+            EditAdd
             <Route path="/current-event/:id" element={<ProtectedRoute>
                 <DetailedCard/></ProtectedRoute>}/>
+
+            <Route path="/edit-event/:id" element={<ProtectedRoute>
+                <EditAdd/></ProtectedRoute>}/>
 
         </Routes>
     )

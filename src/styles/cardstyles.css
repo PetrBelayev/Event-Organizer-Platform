@@ -9,6 +9,7 @@
     margin: 1rem; /* отступы между карточками */
     display: flex;
     flex-direction: column;
+    height: 48vh;
 }
 
 a {
