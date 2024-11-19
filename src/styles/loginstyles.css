@@ -1,0 +1,109 @@
+.login-wrapper {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(180deg, #006FF2 0%, #006FF2 100%);
+    /*padding: 20px;*/
+}
+
+.login-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin-top: 5vh;
+    margin-left: 2vw;
+}
+
+.login-container {
+    background-color: #7DB3ED;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 28vw;
+    height: fit-content;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    max-width: 100%; /* ensures it fits smaller screens */
+}
+
+.login-container h1 {
+    font-size: 1.5rem; /* use rem for flexible sizing */
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.login-container label {
+    display: block;
+    font-size: 0.875rem; /* 14px equivalent */
+    margin-bottom: 5px;
+    color: #fff;
+    text-align: left;
+}
+
+.login-container input {
+    align-self: center;
+    width: 100%;
+    height: 5.5vh;
+    border: 1.9px solid;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-sizing: border-box
+}
+
+.login-container input:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 119, 255, 0.5);
+}
+
+.login-container button {
+    align-self: center;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background-color: #0077FF;
+    color: white;
+    font-size: 1rem; /* flexible sizing */
+    cursor: pointer;
+}
+
+.login-container button:hover {
+    background-color: #0059CC;
+}
+
+.login-container .forgot-password {
+    color: #B3D7FF;
+    text-align: center;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    font-size: 0.875rem; /* 14px */
+}
+
+.login-container .forgot-password:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.error-log {
+    margin-top: 1.5vh;
+    color: #A62800;
+    font-size: 0.95rem; /* 14px */
+
+}
+
+@media only screen and (max-width: 767px) {
+    .login-container {
+        width: 70vw;
+        height: fit-content;
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        max-width: 100%; /* ensures it fits smaller screens */
+    }
+}
