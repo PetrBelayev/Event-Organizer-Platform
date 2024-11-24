@@ -1,23 +1,46 @@
 import Header from "../components/header";
 import { useNavigate, useParams } from "react-router-dom";
 import "../styles/сurrcardstyles.css";
-import defaultImg from "../images/img.png";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import bin from "../images/bin.svg";
 import pen from "../images/pen.svg";
+import { deleteCard } from "../api/delete-card";
+import { CardProps, fetchCard } from "../api/get-cards";
+import { images } from "../components/images-array";
+import defaultImg from "../images/img.png";
 
 const DetailedCard = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [card, setCard] = useState<CardProps | null>(null);
 
-  const deleteEvent = () => {
-    navigate("/main-page");
+  const deleteEvent = async () => {
+    try {
+      await deleteCard(Number(id));
+    } catch (error) {
+      console.log(error);
+    } finally {
+      navigate("/main-page");
+    }
   };
 
   const editEvent = () => {
     if (id) navigate("/edit-event/" + id.toString());
     else navigate("/main-page");
   };
+
+  useEffect(() => {
+    const fetchCardInfo = async () => {
+      try {
+        const fetchedCard = await fetchCard(Number(id));
+        setCard(fetchedCard); // Обновляем состояние
+      } catch (error) {
+        console.error("Ошибка загрузки данных карты:", error);
+      }
+    };
+
+    fetchCardInfo();
+  }, [id]);
 
   return (
     <>
@@ -26,29 +49,33 @@ const DetailedCard = () => {
         <div className="curr-card-info">
           <img
             className="card-image"
-            src={defaultImg}
-            alt="Picture was here!"
+            src={
+              images.find((image) => image.id === Number(card?.imgUrl))?.src ||
+              defaultImg
+            }
+            alt="Event"
           />
           <div className="card-content">
-            <h2 className="card-title">Event title! Wow!</h2>
+            <h2 className="card-title">{card?.title || "Не указано"}</h2>
             <p>
-              <strong>Когда:</strong> 22.22.2024 18:30
+              <strong>Когда:</strong> {card?.time || "Не указано"}
             </p>
             <p>
-              <strong>Где:</strong> Москва{" "}
+              <strong>Где:</strong> {card?.location || "Не указано"}
             </p>
             <p>
-              <strong>Описание:</strong> Описание отсутствует
+              <strong>Описание:</strong>{" "}
+              {card?.description || "Описание отсутствует"}
             </p>
           </div>
 
           <div className="buttons">
             <button className="bin" onClick={deleteEvent}>
-              <img src={bin} />
+              <img src={bin} alt="Delete" />
               Delete
             </button>
             <button className="pen" onClick={editEvent}>
-              <img src={pen} />
+              <img src={pen} alt="Edit" />
               Edit
             </button>
           </div>

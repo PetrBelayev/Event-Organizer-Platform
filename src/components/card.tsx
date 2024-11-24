@@ -5,19 +5,19 @@ import defaultImg from "../images/img.png";
 import { images } from "./images-array";
 
 const Card: React.FC<CardProps> = ({
-  title,
-  img_url,
-  time,
-  location,
+  id,
   description,
+  location,
+  title,
+  imgUrl,
+  time,
 }) => {
   return (
-    <div className="card">
+    <div className="card" id={id.toString()} key={id.toString()}>
       <img
         className="card-image"
         src={
-          images.find((image) => image.id === Number(img_url))?.src ||
-          defaultImg
+          images.find((image) => image.id === Number(imgUrl))?.src || defaultImg
         }
         alt={title}
       />

@@ -1,4 +1,6 @@
 import axios from "axios";
+import { Simulate } from "react-dom/test-utils";
+import error = Simulate.error;
 
 export interface LoginData {
   email: string;
@@ -7,11 +9,14 @@ export interface LoginData {
 
 export const setUser = async (data: LoginData): Promise<void> => {
   try {
-    const response = await axios.post("/api/v1/auth/signin", data);
+    const response = await axios.post("/user/login", data);
 
-    // Пробуем получить токен из заголовков или из данных
     if (response.status === 200) {
-      localStorage.setItem("token", "TOKEN");
+      if (response.data == true) {
+        localStorage.setItem("token", data.email);
+      } else {
+        throw error;
+      }
     }
   } catch (error) {
     console.error("Ошибка при попытке входа в систему:", error);

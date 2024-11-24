@@ -2,61 +2,43 @@ import Header from "../components/header";
 import Card from "../components/card";
 import "../styles/cardstyles.css";
 import { Link } from "react-router-dom";
-
-const mockData = [
-  {
-    id: 1,
-    title: "День рождения кошки бабушки",
-    img_url: 1,
-    time: "2024-12-25 18:00",
-    location: "Квартира №5",
-    description: "Отметим за чаем с тортом!",
-  },
-  {
-    id: 2,
-    title: "Концерт в парке",
-    img_url: 2,
-    time: "2024-12-20 19:00",
-    location: "Центральный парк",
-    description: "Музыка, танцы и хорошее настроение.",
-  },
-  {
-    id: 3,
-    title: "Семинар по программированию",
-    img_url: 3,
-    time: "2024-11-30 14:00",
-    location: "Онлайн",
-    description: "Разбираем основы React и TypeScript!",
-  },
-  {
-    id: 4,
-    title: "Фестиваль уличной еды",
-    img_url: 2,
-    time: "2024-12-10 12:00",
-    location: "Площадь Согласия",
-    description: "Попробуйте кухни мира прямо в центре города!",
-  },
-  {
-    id: 5,
-    title: "Выставка современного искусства",
-    img_url: 1,
-    time: "2024-12-18 10:00",
-    location: "Галерея XXI века",
-    description: "Новые перспективы и яркие впечатления.",
-  },
-];
+import { useEffect, useState } from "react";
+import { CardProps, fetchCards } from "../api/get-cards";
+import { Simulate } from "react-dom/test-utils";
+import error = Simulate.error;
 
 const MainPage = () => {
+  const [cardData, setCardData] = useState<CardProps[]>([]);
+
+  useEffect(() => {
+    const fetchingCards = async () => {
+      try {
+        if (localStorage.getItem("token") != null) {
+          const parameter = localStorage.getItem("token") || "";
+          const response = await fetchCards(parameter);
+          setCardData(response);
+        } else {
+          throw error;
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchingCards();
+  }, []);
+
   return (
     <>
       <Header />
       <div className="card-list">
-        {mockData.map((event) => (
+        {cardData.map((event) => (
           <Link to={`/current-event/${event.id}`} key={event.id}>
             <Card
               key={event.id}
+              id={event.id}
               title={event.title}
-              img_url={event.img_url}
+              imgUrl={event.imgUrl}
               time={event.time}
               location={event.location}
               description={event.description}

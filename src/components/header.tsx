@@ -20,7 +20,7 @@ const Header = () => {
 
         <div className="list-links">
           <div onClick={() => navigate("/about-us")}>О сайте</div>
-          <div onClick={() => navigate("/edit-event/0")}>+Событие</div>
+          <div onClick={() => navigate("/edit-event/-1")}>+Событие</div>
           <div onClick={() => navigate("/main-page")}>Все события</div>
           <div onClick={clear}>Выйти</div>
         </div>

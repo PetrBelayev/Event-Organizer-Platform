@@ -1,11 +1,11 @@
-import "../styles/loginstyles.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { LoginData, setUser } from "../api/login-data";
-import { Simulate } from "react-dom/test-utils";
+import { LoginData } from "../api/login-data";
 import error = Simulate.error;
+import { Simulate } from "react-dom/test-utils";
+import { setNewUser } from "../api/register-data";
 
-const LoginPage = () => {
+const Register = () => {
   const navigate = useNavigate();
   const [mistakes, setMistakes] = useState<boolean>(false);
   const [login, setLogin] = useState<string>("");
@@ -19,9 +19,10 @@ const LoginPage = () => {
       };
 
       validation(data);
-      await setUser(data);
 
-      navigate("/main-page");
+      await setNewUser(data);
+
+      navigate("/");
     } catch (error) {
       setMistakes(true);
       setTimeout(() => {
@@ -30,18 +31,29 @@ const LoginPage = () => {
     }
   };
 
-  const validation = (data: LoginData) => {
-    if (data.email && data.password && !data.email.includes(" ")) {
+  const validation = (data: LoginData): boolean => {
+    const englishOnlyRegex = /^[A-Za-z0-9@._-]+$/; // Разрешены только английские буквы, цифры и символы @._-
+
+    if (
+      data.email &&
+      data.password &&
+      !data.email.includes(" ") &&
+      englishOnlyRegex.test(data.email) &&
+      englishOnlyRegex.test(data.password)
+    ) {
       return true;
     }
+
     throw error;
   };
 
   return (
     <div className="login-wrapper">
       <div className="login-container">
-        <h1>EVENT ORGANISER</h1>
-        <label>Логин</label>
+        <h1 onClick={() => navigate("/")}>
+          {"<- Регистрация в EVENT ORGANISER"}
+        </h1>
+        <label>Придумайте логин</label>
         <input
           style={
             mistakes ? { borderColor: "#A62800" } : { borderColor: "#FFFFFF" }
@@ -51,7 +63,7 @@ const LoginPage = () => {
           onChange={(e) => setLogin(e.target.value)} // Обновление состояния login
         />
 
-        <label>Пароль</label>
+        <label>Придумайте пароль</label>
         <input
           style={
             mistakes ? { borderColor: "#A62800" } : { borderColor: "#FFFFFF" }
@@ -61,21 +73,17 @@ const LoginPage = () => {
           onChange={(e) => setPassword(e.target.value)} // Обновление состояния password
         />
 
-        <div className="forgot-password" onClick={() => navigate("/register")}>
-          Нет аккаунта? Зарегистрируйтесь!
-        </div>
-
-        <button onClick={doNavigation}>Войти</button>
+        <button onClick={doNavigation}>Зарегистрироваться</button>
 
         <h2
           className="error-log"
           style={mistakes ? { opacity: 100 } : { opacity: 0 }}
         >
-          Такого пользователя не существует! Проверьте введенные данные
+          В пароле и логине не должно быть русских букв или пробелов!
         </h2>
       </div>
     </div>
   );
 };
 
-export default LoginPage;
+export default Register;
