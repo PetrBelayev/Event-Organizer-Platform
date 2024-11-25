@@ -1,4 +1,5 @@
 import axios from "axios";
+import { BASE_URL } from "./api";
 
 export interface LoginData {
   email: string;
@@ -7,7 +8,7 @@ export interface LoginData {
 
 export const setNewUser = async (data: LoginData): Promise<void> => {
   try {
-    const response = await axios.post("/user/save", data, {
+    const response = await axios.post(BASE_URL + "/user/save", data, {
       headers: {
         "Content-Type": "application/json",
       },
