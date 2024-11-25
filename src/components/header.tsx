@@ -19,10 +19,10 @@ const Header = () => {
         </Link>
 
         <div className="list-links">
-          <div onClick={() => navigate("/about-us")}>О сайте</div>
-          <div onClick={() => navigate("/edit-event/-1")}>+Событие</div>
-          <div onClick={() => navigate("/main-page")}>Все события</div>
-          <div onClick={clear}>Выйти</div>
+          <div onClick={() => navigate("/about-us")}>About</div>
+          <div onClick={() => navigate("/edit-event/-1")}>+Event</div>
+          <div onClick={() => navigate("/main-page")}>All Events</div>
+          <div onClick={clear}>LogOut</div>
         </div>
       </div>
     </>

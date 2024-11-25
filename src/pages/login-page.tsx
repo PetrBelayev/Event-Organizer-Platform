@@ -41,7 +41,7 @@ const LoginPage = () => {
     <div className="login-wrapper">
       <div className="login-container">
         <h1>EVENT ORGANISER</h1>
-        <label>Логин</label>
+        <label>Login</label>
         <input
           style={
             mistakes ? { borderColor: "#A62800" } : { borderColor: "#FFFFFF" }
@@ -51,7 +51,7 @@ const LoginPage = () => {
           onChange={(e) => setLogin(e.target.value)} // Обновление состояния login
         />
 
-        <label>Пароль</label>
+        <label>Password</label>
         <input
           style={
             mistakes ? { borderColor: "#A62800" } : { borderColor: "#FFFFFF" }
@@ -62,16 +62,16 @@ const LoginPage = () => {
         />
 
         <div className="forgot-password" onClick={() => navigate("/register")}>
-          Нет аккаунта? Зарегистрируйтесь!
+          Do not have an account? Sign up!
         </div>
 
-        <button onClick={doNavigation}>Войти</button>
+        <button onClick={doNavigation}>Log in</button>
 
         <h2
           className="error-log"
           style={mistakes ? { opacity: 100 } : { opacity: 0 }}
         >
-          Такого пользователя не существует! Проверьте введенные данные
+          User doesn`t exist!
         </h2>
       </div>
     </div>

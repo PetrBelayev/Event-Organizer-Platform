@@ -10,28 +10,25 @@ const AboutUs = () => {
         <div className="aboutwrapper">
           <img src={image} alt="" />
           <span>
-            Event Organiser — это сайт для организации мероприятий, созданный
-            студентом Университета Иннополис Петром Беляевым. Основная цель
-            проекта — предоставить удобный инструмент для планирования и
-            управления событиями, который позволяет пользователям добавлять,
-            редактировать и просматривать мероприятия с учетом даты,
-            местоположения и описания. Сайт включает в себя следующие основные
-            функции. Во-первых, возможность создания мероприятий, где
-            пользователь может указать название, дату (с проверкой на
-            корректность, чтобы она была не раньше текущей), местоположение и
-            описание события. Во-вторых, на главной странице отображается список
-            всех запланированных мероприятий с краткой информацией о каждом из
-            них, включая название, дату и место проведения. Также предусмотрены
-            функции редактирования и удаления событий, позволяя пользователям
-            вносить изменения в ранее добавленные мероприятия или удалять их.
-            Помимо этого, можно выбрать обложку для мероприятия из предложенных
-            вариантов, чтобы сделать каждое событие более визуально
-            привлекательным. Проект ориентирован на студентов и преподавателей,
-            которые хотят организовывать учебные мероприятия, а также на всех,
-            кто планирует вечеринки, конференции, спортивные или культурные
-            события.<br></br>
+            Event Organizer is a website for managing events, created by
+            Innopolis University student Petr Belyaev. The main goal of the
+            project is to provide a convenient tool for planning and managing
+            events, allowing users to add, edit, and view events with details
+            such as date, location, and description. The website includes the
+            following key features: Event Creation: Users can create events by
+            specifying a title, date (with validation to ensure the date is not
+            earlier than the current date), location, and description. Homepage
+            Event List: The main page displays a list of all planned events with
+            brief information about each, including the title, date, and
+            location. Editing and Deleting Events: Users can modify details of
+            previously added events or delete them entirely. Event Cover
+            Selection: Users can choose a cover image for their events from a
+            set of options, making each event more visually appealing. The
+            project is designed for students and faculty who wish to organize
+            academic events, as well as anyone planning parties, conferences,
+            sports, or cultural events.<br></br>
             <a href="https://github.com/PetrBelayev">
-              Ссылка на GitHub разработчика!
+              Link to the developer`s GitHub!
             </a>
           </span>
         </div>

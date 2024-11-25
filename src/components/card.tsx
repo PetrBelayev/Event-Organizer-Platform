@@ -24,13 +24,13 @@ const Card: React.FC<CardProps> = ({
       <div className="card-content">
         <h2 className="card-title">{title}</h2>
         <p>
-          <strong>Когда:</strong> {time || "Не указано"}
+          <strong>Когда:</strong> {time || "Miss"}
         </p>
         <p>
-          <strong>Где:</strong> {location || "Не указано"}
+          <strong>Где:</strong> {location || "Miss"}
         </p>
         <p>
-          <strong>Описание:</strong> {description || "Описание отсутствует"}
+          <strong>Описание:</strong> {description || "Miss"}
         </p>
       </div>
     </div>

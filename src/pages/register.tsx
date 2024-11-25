@@ -8,8 +8,11 @@ import { setNewUser } from "../api/register-data";
 const Register = () => {
   const navigate = useNavigate();
   const [mistakes, setMistakes] = useState<boolean>(false);
+  const [mistakesSet, setMistakesSet] = useState<boolean>(false);
+
   const [login, setLogin] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [password2, setPassword2] = useState<string>("");
 
   const doNavigation = async () => {
     try {
@@ -18,7 +21,15 @@ const Register = () => {
         password: password,
       };
 
-      validation(data);
+      const res = validation(data);
+
+      if (!res) {
+        setMistakesSet(true);
+        setTimeout(() => {
+          setMistakesSet(false);
+        }, 3500);
+        return;
+      }
 
       await setNewUser(data);
 
@@ -32,7 +43,11 @@ const Register = () => {
   };
 
   const validation = (data: LoginData): boolean => {
-    const englishOnlyRegex = /^[A-Za-z0-9@._-]+$/; // Разрешены только английские буквы, цифры и символы @._-
+    const englishOnlyRegex = /^[A-Za-z0-9@._-]+$/;
+
+    if (data.password != password2) {
+      return false;
+    }
 
     if (
       data.email &&
@@ -51,35 +66,52 @@ const Register = () => {
     <div className="login-wrapper">
       <div className="login-container">
         <h1 onClick={() => navigate("/")}>
-          {"<- Регистрация в EVENT ORGANISER"}
+          {"<- Register in EVENT ORGANISER"}
         </h1>
-        <label>Придумайте логин</label>
+        <label>Set login</label>
         <input
           style={
             mistakes ? { borderColor: "#A62800" } : { borderColor: "#FFFFFF" }
           }
           type="text"
           value={login}
-          onChange={(e) => setLogin(e.target.value)} // Обновление состояния login
+          onChange={(e) => setLogin(e.target.value)}
         />
 
-        <label>Придумайте пароль</label>
+        <label>Set password</label>
         <input
           style={
             mistakes ? { borderColor: "#A62800" } : { borderColor: "#FFFFFF" }
           }
           type="password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)} // Обновление состояния password
+          onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button onClick={doNavigation}>Зарегистрироваться</button>
+        <label>Repeat password</label>
+        <input
+          style={
+            mistakes ? { borderColor: "#A62800" } : { borderColor: "#FFFFFF" }
+          }
+          type="password"
+          value={password2}
+          onChange={(e) => setPassword2(e.target.value)}
+        />
+
+        <button onClick={doNavigation}>Register</button>
 
         <h2
           className="error-log"
           style={mistakes ? { opacity: 100 } : { opacity: 0 }}
         >
-          В пароле и логине не должно быть русских букв или пробелов!
+          Use only english letters!
+        </h2>
+
+        <h2
+          className="error-log"
+          style={mistakesSet ? { opacity: 100 } : { opacity: 0 }}
+        >
+          Passwords does not match!
         </h2>
       </div>
     </div>

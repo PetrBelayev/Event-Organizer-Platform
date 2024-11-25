@@ -33,7 +33,7 @@ const DetailedCard = () => {
     const fetchCardInfo = async () => {
       try {
         const fetchedCard = await fetchCard(Number(id));
-        setCard(fetchedCard); // Обновляем состояние
+        setCard(fetchedCard);
       } catch (error) {
         console.error("Ошибка загрузки данных карты:", error);
       }
@@ -56,16 +56,15 @@ const DetailedCard = () => {
             alt="Event"
           />
           <div className="card-content">
-            <h2 className="card-title">{card?.title || "Не указано"}</h2>
+            <h2 className="card-title">{card?.title || "Miss"}</h2>
             <p>
-              <strong>Когда:</strong> {card?.time || "Не указано"}
+              <strong>Когда:</strong> {card?.time || "Miss"}
             </p>
             <p>
-              <strong>Где:</strong> {card?.location || "Не указано"}
+              <strong>Где:</strong> {card?.location || "Miss"}
             </p>
             <p>
-              <strong>Описание:</strong>{" "}
-              {card?.description || "Описание отсутствует"}
+              <strong>Описание:</strong> {card?.description || "Miss"}
             </p>
           </div>
 

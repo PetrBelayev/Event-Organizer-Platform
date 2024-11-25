@@ -67,7 +67,11 @@ const EditAdd = () => {
       throw error;
     }
 
-    if (!date || inputDate.getTime() < today.getTime()) {
+    if (
+      !date ||
+      inputDate.getTime() < today.getTime() ||
+      inputDate.getFullYear() > 2100
+    ) {
       throw error;
     }
 
@@ -79,8 +83,8 @@ const EditAdd = () => {
       <Header />
       <div className="wrapper">
         <div className="login-container">
-          <h1>Редактировать/добавить событие</h1>
-          <label>Название мероприятия</label>
+          <h1>Add or edit event</h1>
+          <label>Event title</label>
           <input
             style={
               mistakes ? { borderColor: "#A62800" } : { borderColor: "#FFFFFF" }
@@ -91,7 +95,7 @@ const EditAdd = () => {
           />
 
           <div className="image-editor">
-            <div>Выберите изображение</div>
+            <div>Choose image</div>
             <div className="image-preview">
               {images.map((image) => (
                 <label key={image.id} style={{ textAlign: "center" }}>
@@ -109,7 +113,7 @@ const EditAdd = () => {
             </div>
           </div>
 
-          <label>Место</label>
+          <label>Location</label>
           <input
             style={
               mistakes ? { borderColor: "#A62800" } : { borderColor: "#FFFFFF" }
@@ -119,7 +123,7 @@ const EditAdd = () => {
             onChange={(e) => setLocation(e.target.value)}
           />
 
-          <label>Описание</label>
+          <label>Description</label>
           <textarea
             maxLength={250}
             style={
@@ -130,7 +134,7 @@ const EditAdd = () => {
             onChange={(e) => setDescription(e.target.value)}
           />
 
-          <label>Дата</label>
+          <label>Date</label>
           <input
             style={
               mistakes ? { borderColor: "#A62800" } : { borderColor: "#FFFFFF" }
@@ -140,13 +144,13 @@ const EditAdd = () => {
             onChange={(e) => setDate(e.target.value)}
           />
 
-          <button onClick={save}>Сохранить</button>
+          <button onClick={save}>Save</button>
 
           <h2
             className="error-log"
             style={mistakes ? { opacity: 100 } : { opacity: 0 }}
           >
-            Дата и используемые символы должны быть корректными!
+            Check the data and used symbols!
           </h2>
         </div>
       </div>
